@@ -24,7 +24,7 @@ done
 today=$(date +'%Y-%m-%d')
 
 if [ "$new" ]; then
-	read data
+	read -r data
 	printf "%s\t%s\n" "$today" "$data" > "$MEMO_FILE"
 else
 	if [ "$(cut -f 1 $MEMO_FILE)" = "$today" ]; then
