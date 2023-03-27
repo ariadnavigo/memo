@@ -1,0 +1,35 @@
+#!/bin/sh
+# See LICENSE file for copyright and license details.
+
+set -e
+
+MEMO_FILE=${MEMO_FILE:-"$HOME/.memofile"}
+
+die() {
+	echo "$1" >&2
+	exit 1
+}
+
+usage() {
+	die 'usage: memo [-n]' >&2
+}
+
+while getopts :n opt; do
+	case "$opt" in
+	n)	new="t" ;;
+	?)	usage ;;
+	esac
+done
+
+today=$(date +'%Y-%m-%d')
+
+if [ "$new" ]; then
+	read data
+	printf "%s\t%s\n" "$today" "$data" > "$MEMO_FILE"
+else
+	if [ "$(cut -f 1 $MEMO_FILE)" = "$today" ]; then
+		cut -f 2 "$MEMO_FILE"
+	else
+		die "Date in memo file is not today's."
+	fi
+fi
