@@ -24,11 +24,14 @@ done
 today=$(date +'%Y-%m-%d')
 
 if [ "$new" ]; then
-	read -r data
-	printf "%s\t%s\n" "$today" "$data" > "$MEMO_FILE"
+	read -r text
+	printf "%s\t%s\n" "$today" "$text" > "$MEMO_FILE"
 else
-	if [ "$(cut -f 1 $MEMO_FILE)" = "$today" ]; then
-		cut -f 2 "$MEMO_FILE"
+	date=$(cut -f 1 $MEMO_FILE)
+	text=$(cut -f 2 $MEMO_FILE)
+
+	if [ "$date" = "$today" ]; then
+		echo "$text"
 	else
 		die "Memo file not valid for today."
 	fi
