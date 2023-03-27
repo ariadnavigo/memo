@@ -30,6 +30,6 @@ else
 	if [ "$(cut -f 1 $MEMO_FILE)" = "$today" ]; then
 		cut -f 2 "$MEMO_FILE"
 	else
-		die "Date in memo file is not today's."
+		die "Memo file not valid for today."
 	fi
 fi
