@@ -27,8 +27,8 @@ if [ "$new" ]; then
 	read -r text
 	printf "%s\t%s\n" "$today" "$text" > "$MEMO_FILE"
 else
-	date=$(cut -f 1 $MEMO_FILE)
-	text=$(cut -f 2 $MEMO_FILE)
+	date=$(cut -f 1 "$MEMO_FILE")
+	text=$(cut -f 2 "$MEMO_FILE")
 
 	if [ "$date" = "$today" ]; then
 		echo "$text"
