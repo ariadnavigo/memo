@@ -11,12 +11,13 @@ die() {
 }
 
 usage() {
-	die 'usage: memo [-n]' >&2
+	die 'usage: memo [-nr]' >&2
 }
 
-while getopts :n opt; do
+while getopts :nr opt; do
 	case "$opt" in
 	n)	new="t" ;;
+	r)	echo > "$MEMO_FILE"; exit ;;
 	?)	usage ;;
 	esac
 done

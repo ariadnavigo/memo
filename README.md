@@ -10,7 +10,7 @@ is able to read from standard output.
 memo accepts this syntax:
 
 ```
-$ memo [-n]
+$ memo [-nr]
 ```
 
 memo stores its message into ``~/.memofile`` by default, but this path may be
@@ -19,6 +19,8 @@ changed by setting up an environment variable named ``$MEMO_FILE``.
 To store a new memo, use the ``-n`` flag; memo will read the contents from
 standard input, so the usual shell utilities may be used to pipe the message
 into memo.
+
+Using the ``-r`` flag empties the file.
 
 Running memo without flags will show the stored message if and only if the date
 is the same as the date of storage of the message. The message will be printed
