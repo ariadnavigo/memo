@@ -26,7 +26,11 @@ today=$(date +'%Y-%m-%d')
 
 if [ "$new" ]; then
 	read -r text
-	printf "%s\t%s\n" "$today" "$text" > "$MEMO_FILE"
+	if [ -z "$text" ]; then
+		die "Memo is empty. Aborting."
+	else
+		printf "%s\t%s\n" "$today" "$text" > "$MEMO_FILE"
+	fi
 else
 	date=$(cut -f 1 "$MEMO_FILE")
 	text=$(cut -f 2 "$MEMO_FILE")
