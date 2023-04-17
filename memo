@@ -16,7 +16,7 @@ usage() {
 
 while getopts :nr opt; do
 	case "$opt" in
-	n)	new="t" ;;
+	n)	new='t' ;;
 	r)	echo > "$MEMO_FILE"; exit ;;
 	?)	usage ;;
 	esac
@@ -27,9 +27,9 @@ today=$(date +'%Y-%m-%d')
 if [ "$new" ]; then
 	read -r text
 	if [ -z "$text" ]; then
-		die "Memo is empty. Aborting."
+		die 'Memo is empty. Aborting.'
 	else
-		printf "%s\t%s\n" "$today" "$text" > "$MEMO_FILE"
+		printf '%s\t%s\n' "$today" "$text" > "$MEMO_FILE"
 	fi
 else
 	date=$(cut -f 1 "$MEMO_FILE")
@@ -38,6 +38,6 @@ else
 	if [ "$date" = "$today" ]; then
 		echo "$text"
 	else
-		die "Memo file not valid for today."
+		die 'Memo file not valid for today.'
 	fi
 fi
