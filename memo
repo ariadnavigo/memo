@@ -11,7 +11,7 @@ die() {
 }
 
 usage() {
-	die 'usage: memo [-nr]' >&2
+	die 'usage: memo [-nr]'
 }
 
 while getopts :nr opt; do
