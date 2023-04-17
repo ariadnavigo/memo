@@ -3,7 +3,7 @@
 
 set -e
 
-MEMO_FILE=${MEMO_FILE:-"$HOME/.memofile"}
+MEMOFILE=${MEMOFILE:-"$HOME/.memofile"}
 
 die() {
 	echo "$1" >&2
@@ -17,7 +17,7 @@ usage() {
 while getopts :nr opt; do
 	case "$opt" in
 	n)	new='t' ;;
-	r)	echo > "$MEMO_FILE"; exit ;;
+	r)	echo > "$MEMOFILE"; exit ;;
 	?)	usage ;;
 	esac
 done
@@ -29,11 +29,11 @@ if [ "$new" ]; then
 	if [ -z "$text" ]; then
 		die 'Memo is empty. Aborting.'
 	else
-		printf '%s\t%s\n' "$today" "$text" > "$MEMO_FILE"
+		printf '%s\t%s\n' "$today" "$text" > "$MEMOFILE"
 	fi
 else
-	date=$(cut -f 1 "$MEMO_FILE")
-	text=$(cut -f 2 "$MEMO_FILE")
+	date=$(cut -f 1 "$MEMOFILE")
+	text=$(cut -f 2 "$MEMOFILE")
 
 	if [ "$date" = "$today" ]; then
 		echo "$text"

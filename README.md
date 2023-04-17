@@ -14,7 +14,7 @@ $ memo [-nr]
 ```
 
 memo stores its message into ``~/.memofile`` by default, but this path may be
-changed by setting up an environment variable named ``$MEMO_FILE``.
+changed by setting up an environment variable named ``$MEMOFILE``.
 
 To store a new memo, use the ``-n`` flag; memo will read the contents from
 standard input, so the usual shell utilities may be used to pipe the message
