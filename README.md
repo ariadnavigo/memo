@@ -28,5 +28,5 @@ to standard output.
 
 ## License
 
-memo is published under an MIT/X11/Expat-type License. See ``LICENSE`` file for 
-copyright and license details.
+memo is published under the MIT License. See ``LICENSE`` file for copyright and 
+license details.
